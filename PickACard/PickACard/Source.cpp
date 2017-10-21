@@ -1,4 +1,5 @@
 #include "Card.h"
+#include "Deck.h"
 
 int randomNumber(int num)
 {
@@ -29,6 +30,10 @@ int main() {
 		int rNum = randomNumber(deck.size() - 1);
 		cout << deck[rNum].getRank() << " of " << deck[rNum].getSuit() << endl;
 	}
+
+	// Instantiate deck of cards
+	Deck d;
+	cout << d.getDeckSize() << endl;
 
 	cin.get();
 	return 0;
