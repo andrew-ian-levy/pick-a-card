@@ -10,6 +10,7 @@ private:
 public:
 	Deck();
 	~Deck();
-	vector<Card> getDeck();
 	int getDeckSize();
+	void printDeck();
+	int generateRandomNumber(int num);
 };

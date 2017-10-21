@@ -12,9 +12,18 @@ Deck::~Deck()
 {
 }
 
-vector<Card> Deck::getDeck()
+void Deck::printDeck() {
+	for (unsigned int i = 0; i < deck.size(); ++i) {
+		cout << deck[i].getRank() << " of " << deck[i].getSuit() << endl;
+	}
+}
+
+int Deck::generateRandomNumber(int num)
 {
-	return vector<Card>();
+	random_device rd;
+	mt19937 gn(rd());
+	uniform_int_distribution<int> range(0, num);
+	return range(gn);
 }
 
 int Deck::getDeckSize()

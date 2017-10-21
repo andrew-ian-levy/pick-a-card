@@ -34,6 +34,8 @@ int main() {
 	// Instantiate deck of cards
 	Deck d;
 	cout << d.getDeckSize() << endl;
+	d.printDeck();
+	cout << d.generateRandomNumber(d.getDeckSize() - 1) << endl;
 
 	cin.get();
 	return 0;
