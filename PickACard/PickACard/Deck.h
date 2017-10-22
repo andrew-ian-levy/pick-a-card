@@ -13,4 +13,5 @@ public:
 	int getDeckSize();
 	void printDeck();
 	int generateRandomNumber(int num);
+	void pickCard();
 };

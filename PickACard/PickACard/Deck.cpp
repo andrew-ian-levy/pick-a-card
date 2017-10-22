@@ -26,6 +26,12 @@ int Deck::generateRandomNumber(int num)
 	return range(gn);
 }
 
+void Deck::pickCard()
+{
+	int rNum = generateRandomNumber(deck.size() - 1);
+	cout << deck[rNum].getRank() << " of " << deck[rNum].getSuit() << endl;
+}
+
 int Deck::getDeckSize()
 {
 	return deck.size();
