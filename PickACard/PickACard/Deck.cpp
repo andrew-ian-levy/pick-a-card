@@ -12,6 +12,13 @@ Deck::~Deck()
 {
 }
 
+void Deck::getDeck() {
+	deck.clear();
+	for (auto s : suit) {
+		for (auto r : rank) { Card c(r, s); deck.push_back(c); }
+	}
+}
+
 void Deck::printDeck() {
 	for (unsigned int i = 0; i < deck.size(); ++i) {
 		cout << deck[i].getRank() << " of " << deck[i].getSuit() << endl;

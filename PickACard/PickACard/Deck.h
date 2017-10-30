@@ -10,8 +10,9 @@ private:
 public:
 	Deck();
 	~Deck();
+	void getDeck();
 	int getDeckSize() ;
 	void printDeck() ;
 	int generateRandomNumber(int num) ;
-	void pickCard() ;
+	void pickCard();
 };
