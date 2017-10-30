@@ -1,6 +1,22 @@
 #include "Card.h"
 #include "Deck.h"
 
+bool validEntry(string *nC, unsigned int *iC){
+	
+	// 1 or 2 character number regex pattern
+	const regex reg("\\d{1,2}");
+
+	// Validate user input
+	bool valid = regex_match(*nC, reg);
+
+	const string s = *nC;
+	*iC = atoi(s.c_str());
+
+	if (*iC > 52) { valid = false; }
+
+	return valid;
+}
+
 int main() {
 
 	// Instantiate deck of cards
@@ -9,23 +25,23 @@ int main() {
 
 	// Pick a card from the deck
 	string noCards;
+	string *nC = &noCards;
 
-	// 1 or 2 character number
-	const regex reg("\\d{1,2}");
+	// integer for valid result
+	unsigned int iNoCards;
+	unsigned int *iN = &iNoCards;
 
 	while (true) {
 
+		d->getDeck();
+
 		cout << "How many cards (1-52): " << flush;
 
-		getline(cin, noCards);
+		getline(cin, *nC);
 
-		// Validate user input
-		const bool result = regex_match(noCards, reg);
-
-		if (result)
+		if (validEntry(nC, iN))
 		{
-			int iNoCards = atoi(noCards.c_str());
-			for (unsigned int i = 0; i < iNoCards; ++i) {
+			for (unsigned int i = 0; i < *iN; ++i) {
 				d->pickCard();
 			}
 		}
@@ -39,8 +55,6 @@ int main() {
 		if (noCards == "0") { break; }
 
 	}
-
-	//cin.get();
 
 	delete d;
 
