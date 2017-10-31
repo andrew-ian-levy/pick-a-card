@@ -1,8 +1,8 @@
 #include "Card.h"
 #include "Deck.h"
 
-bool validEntry(string *nC, unsigned int *iC){
-	
+bool validEntry(string *nC, unsigned int *iC) {
+
 	// 1 or 2 character number regex pattern
 	const regex reg("\\d{1,2}");
 
@@ -20,14 +20,13 @@ bool validEntry(string *nC, unsigned int *iC){
 int main() {
 
 	// Instantiate deck of cards
-
 	Deck *d = new Deck();
 
-	// Pick a card from the deck
+	// Vars for user input
 	string noCards;
 	string *nC = &noCards;
 
-	// integer for valid result
+	// Vars for user input as integer
 	unsigned int iNoCards;
 	unsigned int *iN = &iNoCards;
 
@@ -35,9 +34,10 @@ int main() {
 
 		d->getDeck();
 
-		cout << "How many cards (1-52): " << flush;
+		cout << "How many cards (1-52)? [0 to quit]: " << flush;
 
 		getline(cin, *nC);
+		cin.clear();
 
 		if (validEntry(nC, iN))
 		{
@@ -47,10 +47,8 @@ int main() {
 		}
 		else
 		{
-			cout << "Number 1-25 please" << endl;
+			cout << "1-52 please" << endl;
 		}
-
-		cin.clear();
 
 		if (noCards == "0") { break; }
 

@@ -2,10 +2,6 @@
 
 Deck::Deck()
 {
-	// Fill deck of cards
-	for (auto s : suit) {
-		for (auto r : rank) { Card c(r, s); deck.push_back(c); }
-	}
 }
 
 Deck::~Deck()
@@ -13,6 +9,7 @@ Deck::~Deck()
 }
 
 void Deck::getDeck() {
+	// Fill deck of cards
 	deck.clear();
 	for (auto s : suit) {
 		for (auto r : rank) { Card c(r, s); deck.push_back(c); }
