@@ -1,7 +1,7 @@
 #include "Card.h"
 #include "Deck.h"
 
-bool validEntry(string *nC, unsigned int *iC) {
+bool validEntry(string *nC, int *iC, int ds)  {
 
 	// 1 or 2 character number regex pattern
 	const regex reg("\\d{1,2}");
@@ -12,7 +12,7 @@ bool validEntry(string *nC, unsigned int *iC) {
 	const string s = *nC;
 	*iC = atoi(s.c_str());
 
-	if (*iC > 52) { valid = false; }
+	if (*iC > ds) { valid = false; }
 
 	return valid;
 }
@@ -27,33 +27,35 @@ int main() {
 	string *nC = &noCards;
 
 	// Vars for user input as integer
-	unsigned int iNoCards;
-	unsigned int *iN = &iNoCards;
+	int iNoCards;
+	int *iN = &iNoCards;
+
+	// Create deck of cards
+	d->getDeck();
 
 	while (true) {
 
-		d->getDeck();
-
-		cout << "How many cards (1-52)? [0 to quit]: " << flush;
+		cout << "How many cards (1-" << d->getDeckSize() << ")? [0 to quit]: " << flush;
 
 		getline(cin, *nC);
 		cin.clear();
 
-		if (validEntry(nC, iN))
+		if (validEntry(nC, iN, d->getDeckSize()))
 		{
-			for (unsigned int i = 0; i < *iN; ++i) {
+			for (int i = 0; i < *iN; ++i) {
 				d->pickCard();
 			}
 		}
 		else
 		{
-			cout << "1-52 please" << endl;
+			cout << "1-" << d->getDeckSize() << " please" << endl;
 		}
 
 		if (noCards == "0") { break; }
 
 	}
 
+	// Destroy deck of cards
 	delete d;
 
 	return 0;
